@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Vehicles Owned{% endblock title %}
+
+{% block content %}
+  {% for vehiclesowned in object_list %}
+    <div class="card">
+      <div class="card-header">
+        <span class="font-weight-bold">{{ vehiclesowned.make }}</span>
+        <span class="font-weight-bold">model: {{ vehiclesowned.model }} | </span>
+        <span class="font-weight-bold">vin: {{ vehiclesowned.VIN_number }} | </span>
+
+        <span class="font-muted">purchase: {{ vehiclesowned.date_of_purchase }} | </span>
+        <span class="font-muted-">service: {{ vehiclesowned.date_of_last_service }} | </span>
+      </div>
+      <div class="card-body">
+        <a href="{% url 'vehiclesown_edit' vehiclesowned.pk %}">Edit</a> |
+        <a href="{% url 'vehiclesown_delete' vehiclesowned.pk %}">Delete</a>
+      </div>
+      <div class="card-footer">
+      </div>
+    </div>
+    <br />
+  {% endfor %}
+{% endblock content %}
